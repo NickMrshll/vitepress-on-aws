@@ -7,3 +7,7 @@ variable "bucket_prefix" {
   type    = string
   default = "vitepress-"
 }
+
+variable "domain" {
+  type = string
+}
