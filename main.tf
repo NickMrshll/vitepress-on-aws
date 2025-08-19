@@ -42,7 +42,7 @@ resource "null_resource" "vitepress_build" {
   }
 
   triggers = {
-    build_time = timestamp()
+    source_hash = sha256(join("", [for f in fileset("${path.module}/docs/.vitepress/dist", "**") : filesha256("${path.module}/docs/.vitepress/dist/${f}")]))
   }
 }
 
@@ -120,7 +120,38 @@ resource "aws_cloudfront_distribution" "vitepress_cdn" {
   viewer_certificate {
     cloudfront_default_certificate = true
   }
+
+  custom_error_response {
+    error_code            = 404
+    response_code         = 404
+    response_page_path    = "/404.html"
+    error_caching_min_ttl = 0
+  }
+
+  custom_error_response {
+    error_code            = 403
+    response_code         = 404
+    response_page_path    = "/404.html"
+    error_caching_min_ttl = 0
+  }
+
 }
+
+resource "null_resource" "cloudfront_invalidation" {
+  depends_on = [
+    aws_s3_object.vitepress_files,
+    aws_cloudfront_distribution.vitepress_cdn
+  ]
+
+  provisioner "local-exec" {
+    command = "aws cloudfront create-invalidation --distribution-id ${aws_cloudfront_distribution.vitepress_cdn.id} --paths '/*'"
+  }
+
+  triggers = {
+    source_hash = sha256(join("", [for f in fileset("${path.module}/docs/.vitepress/dist", "**") : filesha256("${path.module}/docs/.vitepress/dist/${f}")]))
+  }
+}
+
 
 # --- S3 bucket policy to allow CloudFront to fetch objects ---
 data "aws_iam_policy_document" "s3_policy" {
