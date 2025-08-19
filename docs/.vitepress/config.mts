@@ -5,6 +5,7 @@ export default defineConfig({
   title: "VitePress On AWS",
   description: "A simple OpenTofu configuration to deploy highly available VitePress site on AWS using S3 and Cloudfront.",
   head: [['link', { rel: 'icon', href: '/mini-logo.svg' }]],
+  cleanUrls: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: '/mini-logo.svg',
