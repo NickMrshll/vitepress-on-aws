@@ -94,6 +94,28 @@ Outside free tier (if you exceed it): ~$8.50 per 100 GB + negligible request cha
 This OpenTofu configuration creates the following infrastructure (this is only a high level diagram).
 ![Infrastructure Diagram](./docs/public/infrastructure-diagram.png)
 
+## VitePress
+
+This project is a wrapper for [VitePress](https://vitepress.dev/) that makes it easy to deploy your VitePress site on AWS. **It is not officially affiliated with VitePress.**
+
+For official VitePress documentation, visit [vitepress.dev](https://vitepress.dev/guide/what-is-vitepress).
+
+### Running Locally
+
+To run your VitePress app locally:
+
+```bash
+# Install dependencies
+npm install
+
+# Start the VitePress dev server
+npm run docs:dev
+```
+
+Your site will be available at `http://localhost:5173` by default.
+
+For instructions on deploying your site, see [Deployment](#deployment).
+
 ## License
 
 This project is licensed under the **MIT License**. See [LICENSE](./LICENSE) for details.
