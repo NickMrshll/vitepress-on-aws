@@ -1,3 +1,7 @@
 output "cloudfront_url" {
-  value = aws_cloudfront_distribution.vitepress_cdn.domain_name
+  value = "https://${aws_cloudfront_distribution.vitepress_cdn.domain_name}"
+}
+
+output "vanity_url" {
+  value = "https://${local.fqdn}"
 }

@@ -8,6 +8,11 @@ variable "bucket_prefix" {
   default = "vitepress-"
 }
 
-variable "domain" {
+variable "domain_name" {
+  type = string
+}
+
+#Set to @ for root domain
+variable "vitepress_subdomain" {
   type = string
 }
