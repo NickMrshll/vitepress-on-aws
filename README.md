@@ -4,6 +4,7 @@ A simple OpenTofu/Terraform configuration to deploy a highly available VitePress
 
 ## Prerequisites
 
+1. NodeJS with NPM installed
 1. OpenTofu or Terraform installed
 1. An AWS account (where you have sufficient privileges)
 1. A preconfigured Route 53 hosted zone in the account
