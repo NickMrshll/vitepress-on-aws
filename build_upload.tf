@@ -7,7 +7,7 @@ resource "null_resource" "vitepress_build" {
 
   triggers = {
     source_hash = sha256(join("", [
-      for f in fileset("${path.module}/docs/.vitepress/dist", "**") : filesha256("${path.module}/docs/.vitepress/dist/${f}")
+      for f in fileset("${path.module}/docs/.vitepress/dist", "**/*") : filesha256("${path.module}/docs/.vitepress/dist/${f}")
     ]))
   }
 }
