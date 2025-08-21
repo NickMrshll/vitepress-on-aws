@@ -6,20 +6,8 @@ export default defineConfig({
   description:
     "A simple OpenTofu configuration to deploy highly available VitePress site on AWS using S3 and Cloudfront.",
   base: "/",
-  head: [
-    ["link", { rel: "icon", href: "/mini-logo.svg" }],
-    [
-      "script",
-      {},
-      `
-    if (window.location.pathname.endsWith('.html')) {
-      const cleanUrl = window.location.pathname.replace(/\\.html$/, '');
-      window.history.replaceState(null, '', cleanUrl);
-    }
-    `,
-    ],
-  ],
-  cleanUrls: true,
+  head: [["link", { rel: "icon", href: "/mini-logo.svg" }]],
+  cleanUrls: false, // This does not work with Cloudfront (requires further investigation)
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: "/mini-logo.svg",
