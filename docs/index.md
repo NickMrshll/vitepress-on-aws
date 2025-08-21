@@ -8,7 +8,7 @@ hero:
   tagline: "A simple OpenTofu configuration to deploy highly available VitePress site on AWS using S3 and Cloudfront."
   image:
     src: /large-logo.svg
-    alt: VitePress On AWS Logo
+    alt: VitePress On AWS Logo (Blue Document Icon)
   actions:
     - theme: brand
       text: Quickstart
